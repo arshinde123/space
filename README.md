@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+*Note: You may use "npm" instead of "yarn"*
+## Install dependencies
+
+### `yarn install`
 
 ## Available Scripts
 
@@ -29,42 +34,32 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+# Folder structure
+- Space
+  - node_modules
+  - public
+  - src
+    - components
+      - common
+    - pages
+    - store
+    - utils
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### UI Library:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+src > components > common folder contains all common (dumb components) they are state-less, they are driven by their parent components.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Here we have used react [Material UI](https://mui.com/) (MUI) library for styling.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Every common compoent (e.g button, loader, alert, etc) is created under src > components > common folder, the reason behind is that we don't want to have any reference (import) to MUI elsewhere other than src > components > common folder and this will benefit us in following way:
 
-## Learn More
+1. When we want to change look and feel of any of the common component, e.g we want to change look and feel of Button then there is only single point where we have to make changes i.e src > components > common > button
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. When we want to change our UI library from MUI to something else (e.g. bootstrap) in that case there is only change we have to do is under src > components > common. This will help to upgrade/replace UI library or look and feel of our design system very easily.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### HTTP Client:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Here we have used [axios](https://axios-http.com/) to make http requests and have written one middleware for this.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Note that, there is only one reference(import) to axios i.e. inside src > store > middleware > api.js, hence if in future we want to change our http client (axios) to something else there is only single file that we need to do changes i.e middleware/api.js.
