@@ -26,7 +26,7 @@ export default slice.reducer;
 
 // Action Creators
 export const getToken = () => (dispatch, getState) => {
-    dispatch(
+    return dispatch(
         apiCallBegan({
             url: '/token',
             method: 'post',

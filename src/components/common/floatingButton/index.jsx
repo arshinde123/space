@@ -1,9 +1,10 @@
 import React from 'react';
 import { Fab } from '@mui/material';
 
-const FloatingButton = ({ text, color, variant }) => {
+const FloatingButton = (props) => {
+    const { text, color, variant } = props;
     return (
-        <Fab variant={variant} color={color}>
+        <Fab variant={variant} color={color} {...props}>
             {text}
         </Fab>
     );

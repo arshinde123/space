@@ -9,7 +9,7 @@ export default function () {
         reducer,
         middleware: (getDefaultMiddleware) => [
             ...getDefaultMiddleware(),
-            logger('console'),
+            logger({logActions: false }),
             api,
         ],
     });

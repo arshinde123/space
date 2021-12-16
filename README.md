@@ -34,6 +34,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `yarn prettier --write .`
+
+This will format all code base, but it will exclude all the files/dir mentioned in .prettierignore
+
 # Folder structure
 - Space
   - node_modules
@@ -60,6 +64,7 @@ Every common compoent (e.g button, loader, alert, etc) is created under src > co
 
 ### HTTP Client:
 
-Here we have used [axios](https://axios-http.com/) to make http requests and have written one middleware for this.
+Here we have used [axios](https://axios-http.com/) to make http requests and have written one custom middleware for this.
 
 Note that, there is only one reference(import) to axios i.e. inside src > store > middleware > api.js, hence if in future we want to change our http client (axios) to something else there is only single file that we need to do changes i.e middleware/api.js.
+

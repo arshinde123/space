@@ -2,16 +2,17 @@ import * as React from 'react';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 
-export default function AlertComponent({
-    title,
-    description,
-    severity,
-    variant,
-    onClose,
-    color,
-    icon,
-    sx,
-}) {
+export default function AlertComponent(props) {
+    const {
+        title,
+        description,
+        severity,
+        variant,
+        onClose,
+        color,
+        icon,
+        sx,
+    } = props
     return (
         <Alert
             sx={sx || { width: '100%' }}
@@ -20,6 +21,7 @@ export default function AlertComponent({
             onClose={onClose}
             color={color}
             icon={icon}
+            {...props}
         >
             {title && <AlertTitle>{title}</AlertTitle>}
             {description}

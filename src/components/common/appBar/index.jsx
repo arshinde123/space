@@ -10,17 +10,18 @@ const useStyles = makeStyles({
     link: { color: 'inherit', textDecoration: 'none' },
 });
 
-export default function ButtonAppBar({
-    color,
-    position,
-    brandLink,
-    brandName,
-}) {
+export default function ButtonAppBar(props) {
+    const {
+        color,
+        position,
+        brandLink,
+        brandName,
+    } = props;
     const classes = useStyles();
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position={position} color={color}>
-                <Toolbar variant="regular">
+        <Box sx={{ flexGrow: 1 }} {...props}>
+            <AppBar position={position} color={color} {...props}>
+                <Toolbar variant="regular" {...props}>
                     {brandLink ? (
                         <Link to={brandLink} className={classes.link}>
                             <Typography
